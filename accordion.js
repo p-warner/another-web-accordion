@@ -1,8 +1,10 @@
 (function ($) {
-	var state = [];
-	
+	var state = [];//opened height, closed height
+	/*
+	* Constructor...
+	*/
 	$.fn.accordion = function( options ) {
-		
+		//setup defaults...
 		var container = this;
 
 		settings = $.extend( {
@@ -11,7 +13,7 @@
 			'handle' : 'h2'
 		}, options);
 
-		sections = this.find(settings.collapseables);
+		sections = this.find(settings.collapseables);//find('section') or find('div')
 
 		$.each( sections, function(i){
 			
@@ -27,7 +29,7 @@
 			});
 
 			$(this).children(settings.handle).eq(0).on('click',function(){
-				change($(this).parent(settings.collapseables), i);
+				change($(this).parent(settings.collapseables), i);//(animate, state)
 			}).append(' <img src="/cgi-bin/images/expandDark.png" />');
 
 		});
